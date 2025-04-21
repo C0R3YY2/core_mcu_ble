@@ -1,0 +1,2 @@
+../Core/Inc/jv_bt+packet_lib/jv_bt+bsc.c:146:10:jv_bsc_upscale_1Mbps	32	static
+../Core/Inc/jv_bt+packet_lib/jv_bt+bsc.c:178:10:jv_bsc_upscale_2Mbps	32	static

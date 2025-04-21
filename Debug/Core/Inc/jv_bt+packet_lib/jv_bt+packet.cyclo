@@ -1,0 +1,9 @@
+../Core/Inc/jv_bt+packet_lib/crc.h:73:21:crc_init	1
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:38:16:reverse	1
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:43:13:generate_whitening_lookup	3
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:62:13:whiten	2
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:94:17:fec_encode	12
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:173:5:create_legacy_advertising_pdu	5
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:247:5:init_packet	9
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:304:6:update_advertising_packet	5
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:366:8:encode_packet	2
