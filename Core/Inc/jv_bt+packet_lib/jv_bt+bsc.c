@@ -15,7 +15,8 @@
  */
 //gpt added
 //#include "core_cm4.h"   /* gives us __REV() for byte‑swap */
-#include "stm32l4xx.h"  /* device header – safely defines __REV() */
+//#include "stm32l4xx.h"  /* device header – safely defines __REV() */
+#include "stm32g0xx.h"	/* device header – safely defines __REV() */
 
 #include "jv_bt+bsc.h"
 
@@ -28,21 +29,21 @@
 #if BLE_OFFSET == -15
 /* -1.5 MHz offset */
 /*                                      Even  Odd  */
-#define THREE_ENCODING_1Mbps CONCAT(0X, f0f0, f0f0)
-#define TWO_ENCODING_1Mbps   CONCAT(0X, 00ff, f0f0)
+#define THREE_ENCODING_1Mbps CONCAT(0X, f0f0, f0f0) //f0f0 = 1111000011110000
+#define TWO_ENCODING_1Mbps   CONCAT(0X, 00ff, f0f0) //00ff = 0000000011111111
 #define ONE_ENCODING_1Mbps   CONCAT(0x, f0f0, 00ff)
 #define ZERO_ENCODING_1Mbps  CONCAT(0x, 00ff, 00ff)
 
 #elif BLE_OFFSET == -30
 /* -3 MHz offset */
 /*                                      Even  Odd  */
-#define THREE_ENCODING_1Mbps CONCAT(0X, 9831, 67ce)
-#define TWO_ENCODING_1Mbps   CONCAT(0X, 711c, 67ce)
+#define THREE_ENCODING_1Mbps CONCAT(0X, 9831, 67ce) //9831 = 1001100000110001
+#define TWO_ENCODING_1Mbps   CONCAT(0X, 711c, 67ce) //67ce = 0110011111001110
 #define ONE_ENCODING_1Mbps   CONCAT(0x, 9831, 8ee3)
 #define ZERO_ENCODING_1Mbps  CONCAT(0x, 711c, 8ee3)
 
-#elif BLE_OFFSET == -35
-/* -3.5 MHz offset */
+#elif BLE_OFFSET == -35								//CCCC = 1100110011001100
+/* -3.5 MHz offset */								//38E7 = 0011100011100111
 /*         	   even/odd harmonics??-->  Even  Odd  */
 #define THREE_ENCODING_1Mbps CONCAT(0X, CCCC, CCCC)  //38E7 = 3MHz    <----- 38E7's bit pattern isn't perfect 3MHz
 #define TWO_ENCODING_1Mbps   CONCAT(0X, 38E7, CCCC)	 //CCCC = 4MHz
@@ -62,16 +63,16 @@
 #elif BLE_OFFSET == -40
 /* -4 MHz offset */
 /*                                      Even  Odd  */
-#define THREE_ENCODING_1Mbps CONCAT(0X, 6c26, 93d9)
-#define TWO_ENCODING_1Mbps   CONCAT(0X, 9831, 93d9)
+#define THREE_ENCODING_1Mbps CONCAT(0X, 6c26, 93d9) //6c26 = 0110110000100110
+#define TWO_ENCODING_1Mbps   CONCAT(0X, 9831, 93d9) //93d9 = 1001001111011001
 #define ONE_ENCODING_1Mbps   CONCAT(0x, 6c26, 67ce)
 #define ZERO_ENCODING_1Mbps  CONCAT(0x, 9831, 67ce)
 
 #elif BLE_OFFSET == -45
 /* -4.5 MHz offset */
 /*                                      Even  Odd  */
-#define THREE_ENCODING_1Mbps CONCAT(0X, db24, db24)
-#define TWO_ENCODING_1Mbps   CONCAT(0X, 3333, db24)
+#define THREE_ENCODING_1Mbps CONCAT(0X, db24, db24) //db24 = 1101101100100100
+#define TWO_ENCODING_1Mbps   CONCAT(0X, 3333, db24) //3333 = 0011001100110011
 #define ONE_ENCODING_1Mbps   CONCAT(0x, db24, 3333)
 #define ZERO_ENCODING_1Mbps  CONCAT(0x, 3333, 3333)
 
@@ -82,22 +83,22 @@
 #elif BLE_OFFSET == 15
 /* 1.5 MHz offset */
 /*                                      Even  Odd  */
-#define THREE_ENCODING_1Mbps CONCAT(0x, 00ff, 00ff)
-#define TWO_ENCODING_1Mbps   CONCAT(0x, f0f0, 00ff)
+#define THREE_ENCODING_1Mbps CONCAT(0x, 00ff, 00ff) //00ff = 0000000011111111
+#define TWO_ENCODING_1Mbps   CONCAT(0x, f0f0, 00ff) //f0f0 = 1111000011110000
 #define ONE_ENCODING_1Mbps   CONCAT(0X, 00ff, f0f0)
 #define ZERO_ENCODING_1Mbps  CONCAT(0X, f0f0, f0f0)
 
 #elif BLE_OFFSET == 30
 /* 3 MHz offset */
 /*                                      Even  Odd  */
-#define THREE_ENCODING_1Mbps CONCAT(0x, 711c, 8ee3)
-#define TWO_ENCODING_1Mbps   CONCAT(0x, 9831, 8ee3)
-#define ONE_ENCODING_1Mbps   CONCAT(0X, 711c, 67ce)
-#define ZERO_ENCODING_1Mbps  CONCAT(0X, 9831, 67ce)
+#define THREE_ENCODING_1Mbps CONCAT(0x, 711c, 8ee3) //711c = 0111000100011100
+#define TWO_ENCODING_1Mbps   CONCAT(0x, 9831, 8ee3) //8ee3 = 1000111011100011
+#define ONE_ENCODING_1Mbps   CONCAT(0X, 711c, 67ce) //9831 = 1001100000110001
+#define ZERO_ENCODING_1Mbps  CONCAT(0X, 9831, 67ce) //67ce = 0110011111001110
 
 
-#elif BLE_OFFSET == 35
-// 3.5 MHz offset
+#elif BLE_OFFSET == 35								//38E7 = 0011100011100111
+// 3.5 MHz offset									//CCCC = 1100110011001100
 //                                      Even  Odd
 #define THREE_ENCODING_1Mbps CONCAT(0x, 38E7, 38E7) //38E7 = 3MHz     <--- it isnt a perfect 3MHz, so maybe there's a bit pattern that's better (results in better range)
 #define TWO_ENCODING_1Mbps   CONCAT(0x, CCCC, 38E7)	//CCCC = 4MHz
@@ -108,16 +109,16 @@
 #elif BLE_OFFSET == 40
 /* 4 MHz offset */
 /*                                      Even  Odd  */
-#define THREE_ENCODING_1Mbps CONCAT(0x, 9831, 67ce)
-#define TWO_ENCODING_1Mbps   CONCAT(0x, 6c26, 67ce)
-#define ONE_ENCODING_1Mbps   CONCAT(0X, 9831, 93d9)
-#define ZERO_ENCODING_1Mbps  CONCAT(0X, 6c26, 93d9)
+#define THREE_ENCODING_1Mbps CONCAT(0x, 9831, 67ce) //9831 = 1001100000110001
+#define TWO_ENCODING_1Mbps   CONCAT(0x, 6c26, 67ce) //67ce = 0110011111001110
+#define ONE_ENCODING_1Mbps   CONCAT(0X, 9831, 93d9) //6c26 = 0110110000100110
+#define ZERO_ENCODING_1Mbps  CONCAT(0X, 6c26, 93d9) //93d9 = 1001001111011001
 
 #elif BLE_OFFSET == 45
 /* 4.5 MHz offset */
 /*                                      Even  Odd  */
-#define THREE_ENCODING_1Mbps CONCAT(0x, 3333, 3333)
-#define TWO_ENCODING_1Mbps   CONCAT(0x, db24, 3333)
+#define THREE_ENCODING_1Mbps CONCAT(0x, 3333, 3333) //3333 = 0011001100110011
+#define TWO_ENCODING_1Mbps   CONCAT(0x, db24, 3333) //db24 = 1101101100100100
 #define ONE_ENCODING_1Mbps   CONCAT(0X, 3333, db24)
 #define ZERO_ENCODING_1Mbps  CONCAT(0X, db24, db24)
 #else
@@ -126,10 +127,10 @@
 
 /* -3 MHz offset */
 /*                                         EvenOdd  */                   //<<-------------- POSSIBLE ERRORRRR!!!!!! ... maybe not bc this is for the 2Mbps encoding
-#define THREE_ENCODING_2Mbps CONCAT(0X, 0000, CCCC)
-#define TWO_ENCODING_2Mbps   CONCAT(0X, 0000, F0CC)
-#define ONE_ENCODING_2Mbps   CONCAT(0x, 0000, CCF0)
-#define ZERO_ENCODING_2Mbps  CONCAT(0x, 0000, F0F0)
+#define THREE_ENCODING_2Mbps CONCAT(0X, 0000, CCCC) //CCCC = 1100110011001100
+#define TWO_ENCODING_2Mbps   CONCAT(0X, 0000, F0CC) //F0CC = 1111000011001100
+#define ONE_ENCODING_2Mbps   CONCAT(0x, 0000, CCF0) //CCF0 = 1100110011110000
+#define ZERO_ENCODING_2Mbps  CONCAT(0x, 0000, F0F0) //F0F0 = 1111000011110000
 
 const uint32_t upscale_lookup_1Mbps[4] = {
     ZERO_ENCODING_1Mbps,

@@ -1,9 +1,9 @@
-../Core/Inc/jv_bt+packet_lib/crc.h:73:21:crc_init	4	static
+../Core/Inc/jv_bt+packet_lib/crc.h:73:21:crc_init	8	static
 ../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:38:16:reverse	16	static
-../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:43:13:generate_whitening_lookup	32	static
-../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:62:13:whiten	32	static
-../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:94:17:fec_encode	40	static
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:43:13:generate_whitening_lookup	40	static
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:62:13:whiten	40	static
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:94:17:fec_encode	56	static
 ../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:173:5:create_legacy_advertising_pdu	40	static
 ../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:247:5:init_packet	40	static
-../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:304:6:update_advertising_packet	24	static
-../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:366:8:encode_packet	48	static
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:304:6:update_advertising_packet	32	static
+../Core/Inc/jv_bt+packet_lib/jv_bt+packet.c:366:8:encode_packet	56	static

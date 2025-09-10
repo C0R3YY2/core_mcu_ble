@@ -25,5 +25,5 @@ SUBDIRS := \
 Core/Inc/jv_bt+packet_lib \
 Core/Src \
 Core/Startup \
-Drivers/STM32L4xx_HAL_Driver/Src \
+Drivers/STM32G0xx_HAL_Driver/Src \
 
