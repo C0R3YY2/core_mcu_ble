@@ -526,6 +526,9 @@ int main(void)
           Error_Handler();
       }
 
+      //memset(packet.whitened_packet, 0x00, packet.packet_len);
+      //memset(packet.whitened_packet, 0xFF, packet.packet_len);
+
       // 3. Upscale packet for backscatter transmission
       #if BLE_PACKET_TYPE == UNCODED_1MBPS
           upscaled_length = jv_bsc_upscale_1Mbps(ble_tx_buffer, packet.whitened_packet, packet.packet_len);
@@ -725,7 +728,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4; ////changed from prescaler_2 to prescaler_4 to get SPI's 8mhz
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
